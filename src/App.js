@@ -23,6 +23,8 @@ function App() {
     })();
   }, [api]);
 
+  console.log(info);
+
   return (
     <div className='App mx-auto'>
       <h1 className='text-center ubuntu my-4'>
@@ -44,7 +46,7 @@ function App() {
         </div>
       </div>
 
-      <Pagination setPageNumber={setPageNumber} pageNumber={pageNumber} />
+      <Pagination info={info} setPageNumber={setPageNumber} pageNumber={pageNumber} />
     </div>
   );
 }
