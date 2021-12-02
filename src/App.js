@@ -3,10 +3,28 @@ import "bootstrap/dist/js/bootstrap";
 import { useEffect, useState } from "react";
 import Cards from "./components/Cards/Cards";
 import Filters from "./components/Filters/Filters";
+import Navbar from "./components/Navbar/Navbar";
 import Pagination from "./components/Pagination/Pagination";
 import Search from "./components/Search/Search";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Episode from "./components/Pages/Episode";
+import Location from "./components/Pages/Location";
 
 function App() {
+  return (
+    <Router>
+      <div className='App'>
+        <Navbar />
+      </div>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/episodes' element={<Episode />} />
+        <Route path='/location' element={<Location />} />
+      </Routes>
+    </Router>
+  );
+}
+const Home = () => {
   let [pageNumber, setPageNumber] = useState(1);
   let [fetchedData, updateFetchedData] = useState([]);
   let [search, setSearch] = useState("");
@@ -30,10 +48,6 @@ function App() {
 
   return (
     <div className='App mx-auto'>
-      <h1 className='text-center ubuntu my-4'>
-        Rick & Mory <span className='text-primary'>Wiki</span>
-      </h1>
-
       <Search setPageNumber={setPageNumber} setSearch={setSearch} search={search} />
 
       <div className='container mx-auto'>
@@ -55,6 +69,6 @@ function App() {
       <Pagination info={info} setPageNumber={setPageNumber} pageNumber={pageNumber} />
     </div>
   );
-}
+};
 
 export default App;
