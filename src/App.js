@@ -10,11 +10,14 @@ function App() {
   let [pageNumber, setPageNumber] = useState(1);
   let [fetchedData, updateFetchedData] = useState([]);
   let [search, setSearch] = useState("");
+  let [status, setStatus] = useState("");
+  let [gender, setGender] = useState("");
+  let [species, setSpecies] = useState("");
 
   // destructuring yapıldı
   let { info, results } = fetchedData;
 
-  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`;
+  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
 
   useEffect(() => {
     (async function () {
@@ -35,9 +38,12 @@ function App() {
 
       <div className='container mx-auto'>
         <div className='row'>
-          <div className='col-3'>
-            <Filters />
-          </div>
+          <Filters
+            setGender={setGender}
+            setStatus={setStatus}
+            setSpecies={setSpecies}
+            setPageNumber={setPageNumber}
+          />
           <div className='col-8'>
             <div className='row'>
               <Cards results={results} />
