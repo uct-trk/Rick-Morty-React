@@ -12,9 +12,9 @@ const Cards = ({ results, page }) => {
         <Link
           to={`${page}${id}`}
           key={id}
-          className='col-4 position-relative mb-4 text-decoration-none text-dark'
+          className='col-lg-4 col-md-6 col-12  position-relative mb-4 text-decoration-none text-dark'
         >
-          <div className={styles.cards}>
+          <div className={`${styles.cards} d-flex flex-column justify-content-center`}>
             <img src={image} alt='' className={`${styles.imgCustom} img-fluid`} />
             <div className='content p-2'>
               <div className='fs-4 fw-bold mb-4'>{name}</div>

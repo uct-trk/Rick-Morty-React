@@ -19,3 +19,9 @@ $primary-blue: #0b5ed7;
     outline: none;
   }
 }
+
+@media (max-width: 576px) {
+  input {
+    width: 80%;
+  }
+}
